@@ -26,8 +26,8 @@ function gUsr(x){return gU()[x]||null}
 function sUsr(x,d){var u=gU();u[x]=d;sU(u)}
 function gDev(){var id=localStorage.getItem(DK);if(!id){id="d_"+Date.now()+"_"+Math.random().toString(36).substr(2,6);localStorage.setItem(DK,id)}return id}
 function tdy(){var d=new Date();return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()}
-function gTr(){try{var t=JSON.parse(localStorage.getItem("ak_trial"));if(t&&t.sd)return t}catch(e){}return{n:0,d:tdy(),sd:tdy()}}
-function sTr(t){localStorage.setItem("ak_trial",JSON.stringify(t))}
+function gTr(){try{var t=JSON.parse(localStorage.getItem("ak_trial_ws"));if(t&&t.sd)return t}catch(e){}return{n:0,d:tdy(),sd:tdy()}}
+function sTr(t){localStorage.setItem("ak_trial_ws",JSON.stringify(t))}
 function dDif(s){return Math.floor((new Date()-new Date(s))/864e5)}
 function canP(){var t=gTr(),td=tdy(),dy=dDif(t.sd);if(dy>=MX)return{ok:false,left:0,exp:true,dl:0};if(t.d!==td){t.n=0;t.d=td;sTr(t)}return{ok:t.n<MD,left:MD-t.n,exp:false,dl:MX-dy}}
 function useT(){var t=gTr(),td=tdy();if(t.d!==td){t.n=0;t.d=td}t.n++;sTr(t);sBan()}
